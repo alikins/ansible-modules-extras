@@ -74,13 +74,13 @@ options:
     choices: ["host", "group"]
   state:
     description:
-      - Present will ensure the mapping exists, absent will remove the mapping. 
+      - Present will ensure the mapping exists, absent will remove the mapping.
       - All parameters I(lun), I(target), I(target_type) and I(volume_name) must still be supplied.
     required: True
     choices: ["present", "absent"]
   api_url:
     description:
-      - "The full API url. Example: http://ENDPOINT:8080/devmgr/v2" 
+      - "The full API url. Example: http://ENDPOINT:8080/devmgr/v2"
       - This can optionally be set via an environment variable, API_URL
     required: False
   api_username:
@@ -211,7 +211,6 @@ def get_hostgroups(module, ssid, api_url, user, pwd):
         rc, data = request(url, headers=HEADERS, url_username=user, url_password=pwd)
         return data
     except Exception:
-        err = get_exception()
         module.fail_json(msg="There was an issue with connecting, please check that your"
                              "endpoint is properly defined and your credentials are correct")
 
@@ -229,7 +228,6 @@ def get_volumes(module, ssid, api_url, user, pwd, mappable):
 
 
 def get_lun_mappings(ssid, api_url, user, pwd, get_all=None):
-    lun_map = []
     mappings = 'storage-systems/%s/volume-mappings' % ssid
     url = api_url + mappings
     rc, data = request(url, url_username=user, url_password=pwd)

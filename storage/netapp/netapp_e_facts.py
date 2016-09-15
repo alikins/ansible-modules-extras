@@ -68,8 +68,6 @@ msg: Gathered facts for <StorageArrayId>.
 """
 import json
 
-import os
-
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule, get_exception
 from ansible.module_utils.urls import open_url
@@ -173,8 +171,7 @@ def main():
             available_capacity=sp['freeSpace'],
             total_capacity=sp['totalRaidedSpace'],
             used_capacity=sp['usedSpace']
-        ) for sp in resp['volumeGroup']
-        ]
+        ) for sp in resp['volumeGroup']]
 
     all_volumes = list(resp['volume'])
     # all_volumes.extend(resp['thinVolume'])
@@ -187,8 +184,7 @@ def main():
             parent_storage_pool_id=v['volumeGroupRef'],
             capacity=v['capacity'],
             is_thin_provisioned=v['thinProvisioned']
-        ) for v in all_volumes
-        ]
+        ) for v in all_volumes]
 
     features = [f for f in resp['sa']['capabilities']]
     features.extend([f['capability'] for f in resp['sa']['premiumFeatures'] if f['isEnabled']])

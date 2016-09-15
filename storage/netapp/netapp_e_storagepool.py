@@ -380,12 +380,12 @@ class NetAppESeriesStoragePool(object):
 
     def _is_valid_drive(self, d):
         is_valid = d['available'] \
-                   and d['status'] == 'optimal' \
-                   and not d['pfa'] \
-                   and not d['removed'] \
-                   and not d['uncertified'] \
-                   and not d['invalidDriveData'] \
-                   and not d['nonRedundantAccess']
+            and d['status'] == 'optimal' \
+            and not d['pfa'] \
+            and not d['removed'] \
+            and not d['uncertified'] \
+            and not d['invalidDriveData'] \
+            and not d['nonRedundantAccess']
 
         return is_valid
 
@@ -620,7 +620,7 @@ class NetAppESeriesStoragePool(object):
     @property
     def reserved_drive_count_differs(self):
         if int(self.pool_detail['volumeGroupData']['diskPoolData'][
-                   'reconstructionReservedDriveCount']) != self.reserve_drive_count:
+            'reconstructionReservedDriveCount']) != self.reserve_drive_count:
             return True
         return False
 
@@ -629,9 +629,8 @@ class NetAppESeriesStoragePool(object):
         if self.criteria_drive_count > len(self.sp_drives):
             return True
         # TODO: is totalRaidedSpace the best attribute for "how big is this SP"?
-        if self.criteria_min_usable_capacity and (
-                    self.criteria_min_usable_capacity * self._size_unit_map[self.criteria_size_unit]) > int(
-            self.pool_detail['totalRaidedSpace']):
+        if self.criteria_min_usable_capacity and \
+                (self.criteria_min_usable_capacity * self._size_unit_map[self.criteria_size_unit]) > int(self.pool_detail['totalRaidedSpace']):
             return True
 
         return False
@@ -848,7 +847,6 @@ class NetAppESeriesStoragePool(object):
                         if int(retc) == 422:
                             self.module.fail_json(
                                 msg="Error in enabling secure pool. One of the drives in the specified storage pool is likely not security capable")
-
 
             elif self.state == 'absent':
                 # delete the storage pool

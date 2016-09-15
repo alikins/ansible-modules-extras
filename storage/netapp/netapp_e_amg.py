@@ -46,7 +46,7 @@ options:
         - Should https certificates be validated?
     name:
         description:
-            - The name of the async array you wish to target, or create. 
+            - The name of the async array you wish to target, or create.
             - If C(state) is present and the name isn't found, it will attempt to create.
         required: yes
     secondaryArrayId:
@@ -70,7 +70,7 @@ options:
         default: 20
     repoUtilizationWarnThreshold:
         description:
-            - Recovery point warning threshold 
+            - Recovery point warning threshold
         required: no
         default: 80
     interfaceType:
@@ -237,7 +237,6 @@ def update_async(module, ssid, api_url, pwd, user, body, new_name, async_id):
     compare_keys = ['syncIntervalMinutes', 'syncWarnThresholdMinutes',
                     'recoveryWarnThresholdMinutes', 'repoUtilizationWarnThreshold']
     desired_state = dict((x, (body.get(x))) for x in compare_keys)
-    label_exists = False
 
     if new_name:
         desired_state['new_name'] = new_name

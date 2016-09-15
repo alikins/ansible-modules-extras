@@ -94,6 +94,7 @@ msg:
     sample: json for newly created flash cache
 """
 import json
+import logging
 import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
@@ -101,9 +102,6 @@ from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.pycompat24 import get_exception
 from ansible.module_utils.urls import open_url
 
-
-import logging
-from traceback import format_exc
 from ansible.module_utils.six.moves.urllib.error import HTTPError
 
 

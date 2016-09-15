@@ -246,11 +246,8 @@ def find_valid_copy_pair_targets_and_sources(params):
                                              headers=HEADERS,
                                              validate_certs=params['validate_certs'])
 
-    valid_targets = []
     if response_code == 200:
-
         source_capacity = None
-        original_loc = None
         candidates = []
         for volume in response_data:
             if volume['id'] == params['search_volume_id']:
@@ -322,9 +319,10 @@ def main():
             e = get_exception()
             module.fail_json(msg="Failed to find valid copy pair candidates. Error [%s]" % str(e))
 
-        module.exit_json(changed=False, msg=' Valid source devices found: %s Valid target devices found: %s' % (
-            len(potential_sources), len(potential_targets)),
-                         search_volume_id=params['search_volume_id'], valid_targets=potential_targets,
+        module.exit_json(changed=False,
+                         msg=' Valid source devices found: %s Valid target devices found: %s' % (len(potential_sources), len(potential_targets)),
+                         search_volume_id=params['search_volume_id'],
+                         valid_targets=potential_targets,
                          valid_sources=potential_sources)
 
     # Check if we want to start or stop a copy operation

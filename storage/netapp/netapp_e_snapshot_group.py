@@ -138,9 +138,6 @@ HEADERS = {
     "Accept": "application/json",
 }
 import json
-import os
-
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule
@@ -292,9 +289,9 @@ class SnapshotGroup(object):
     @property
     def ssg_needs_update(self):
         if self.ssg_data['fullWarnThreshold'] != self.warning_threshold or \
-                        self.ssg_data['autoDeleteLimit'] != self.delete_limit or \
-                        self.ssg_data['repFullPolicy'] != self.full_policy or \
-                        self.ssg_data['rollbackPriority'] != self.rollback_priority:
+                self.ssg_data['autoDeleteLimit'] != self.delete_limit or \
+                self.ssg_data['repFullPolicy'] != self.full_policy or \
+                self.ssg_data['rollbackPriority'] != self.rollback_priority:
             return True
         else:
             return False

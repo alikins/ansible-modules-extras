@@ -17,7 +17,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 
@@ -144,7 +143,6 @@ msg: "Volume [workload_vol_1] already exists."
 
 import json
 import logging
-import os
 import time
 from traceback import format_exc
 
@@ -531,7 +529,6 @@ class NetAppESeriesVolume(object):
 
         if self.volume_detail:
             volume_exists = True
-            volume_id = self.volume_detail['id']
 
             if self.state == 'absent':
                 self.debug("CHANGED: volume exists, but requested state is 'absent'")

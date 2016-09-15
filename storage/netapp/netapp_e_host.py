@@ -22,7 +22,7 @@ DOCUMENTATION = """
 module: netapp_e_host
 short_description: manage eseries hosts
 description:
-    - Create, update, remove hosts on NetApp E-series storage arrays 
+    - Create, update, remove hosts on NetApp E-series storage arrays
 version_added: '2.2'
 author: Kevin Hulquest (@hulquest)
 options:
@@ -260,7 +260,7 @@ class Host(object):
         self.force_port_update = False
 
         if self.host_obj['clusterRef'] != self.group_id or \
-                        self.host_obj['hostTypeIndex'] != self.host_type_index:
+                self.host_obj['hostTypeIndex'] != self.host_type_index:
             needs_update = True
 
         if self.ports:

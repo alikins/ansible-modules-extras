@@ -80,9 +80,6 @@ HEADERS = {
     "Accept": "application/json",
 }
 import json
-import os
-
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule

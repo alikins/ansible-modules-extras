@@ -103,9 +103,6 @@ msg:
     sample: "Password Updated Successfully"
 '''
 import json
-import os
-
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule
@@ -271,8 +268,6 @@ def main():
         module.fail_json(
             msg="Admin account has a password set. " +
                 "You must supply current_password in order to update the RO or Admin passwords")
-    else:
-        pass_set = True
 
     if len(new_password) > 30:
         module.fail_json(msg="Passwords must not be greater than 30 characters in length")

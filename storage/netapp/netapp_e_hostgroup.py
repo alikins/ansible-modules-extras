@@ -174,7 +174,6 @@ def request(url, data=None, headers=None, method='GET', use_proxy=True,
 
 def group_exists(module, id_type, ident, ssid, api_url, user, pwd):
     rc, data = get_hostgroups(module, ssid, api_url, user, pwd)
-    quantity = 0
     for group in data:
         if group[id_type] == ident:
             return True, data
@@ -267,8 +266,7 @@ def delete_hostgroup(module, ssid, group_id, api_url, user, pwd):
         rc, data = request(url, method='DELETE', headers=HEADERS, url_username=user, url_password=pwd)
     except Exception:
         err = get_exception()
-        module.fail_json(msg="Failed to delete host group. Group [%s]. Id [%s]. Error [%s]." % (group_id, ssid
-                                                                                                , str(err)))
+        module.fail_json(msg="Failed to delete host group. Group [%s]. Id [%s]. Error [%s]." % (group_id, ssid, str(err)))
 
     return rc, data
 

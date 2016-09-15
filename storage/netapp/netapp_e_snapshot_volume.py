@@ -47,12 +47,12 @@ options:
         description:
         - Should https certificates be validated?
     ssid:
-      description: 
+      description:
           - storage array ID
       required: True
     snapshot_image_id:
       required: True
-      description: 
+      description:
           - The identifier of the snapshot image used to create the new snapshot volume.
           - "Note: You'll likely want to use the M(netapp_e_facts) module to find the ID of the image you want."
     full_threshold:
@@ -62,7 +62,7 @@ options:
     name:
       required: True
       description:
-          - The name you wish to give the snapshot volume 
+          - The name you wish to give the snapshot volume
     view_mode:
       required: True
       description:
@@ -78,13 +78,13 @@ options:
       default: 20
     storage_pool_name:
       description:
-          - Name of the storage pool on which to allocate the repository volume. 
+          - Name of the storage pool on which to allocate the repository volume.
       required: True
     state:
       description:
           - Whether to create or remove the snapshot volume
       required: True
-      choices: 
+      choices:
           - absent
           - present
 """
@@ -112,9 +112,6 @@ HEADERS = {
     "Accept": "application/json",
 }
 import json
-import os
-
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule

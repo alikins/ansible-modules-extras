@@ -51,18 +51,18 @@ options:
         required: yes
     role:
         description:
-            - Whether the array should be the primary or secondary array for the AMG 
+            - Whether the array should be the primary or secondary array for the AMG
         required: yes
         choices: ['primary', 'secondary']
     noSync:
         description:
             - Whether to avoid synchronization prior to role reversal
         required: no
-        default: no 
+        default: no
         choices: [yes, no]
     force:
         description:
-            - Whether to force the role reversal regardless of the online-state of the primary 
+            - Whether to force the role reversal regardless of the online-state of the primary
         required: no
         default: no
 """
@@ -144,7 +144,6 @@ def has_match(module, ssid, api_url, api_pwd, api_usr, body, name):
         amg_rc, amgs = request(url, url_username=api_usr, url_password=api_pwd,
                                headers=HEADERS)
     except:
-        err = get_exception()
         module.fail_json(msg="Failed to find AMGs on storage array. Id [%s]" % (ssid))
 
     for amg in amgs:

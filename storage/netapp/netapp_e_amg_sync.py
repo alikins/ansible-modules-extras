@@ -54,7 +54,7 @@ options:
         required: yes
     state:
         description:
-            - The synchronization action you'd like to take. 
+            - The synchronization action you'd like to take.
             - If C(running) then it will begin syncing if there is no active sync or will resume a suspended sync. If there is already a sync in progress, it will return with an OK status.
             - If C(suspended) it will suspend any ongoing sync action, but return OK if there is no active sync or if the sync is already suspended
         choices:
@@ -63,8 +63,8 @@ options:
         required: yes
     delete_recovery_point:
         description:
-            - Indicates whether the failures point can be deleted on the secondary if necessary to achieve the synchronization. 
-            - If true, and if the amount of unsynchronized data exceeds the CoW repository capacity on the secondary for any member volume, the last failures point will be deleted and synchronization will continue. 
+            - Indicates whether the failures point can be deleted on the secondary if necessary to achieve the synchronization.
+            - If true, and if the amount of unsynchronized data exceeds the CoW repository capacity on the secondary for any member volume, the last failures point will be deleted and synchronization will continue.
             - If false, the synchronization will be suspended if the amount of unsynchronized data exceeds the CoW Repository capacity on the secondary and the failures point will be preserved.
             - "NOTE: This only has impact for newly launched syncs."
         choices:
@@ -124,9 +124,6 @@ json:
     }
 """
 import json
-import os
-
-import sys
 
 from ansible.module_utils.api import basic_auth_argument_spec
 from ansible.module_utils.basic import AnsibleModule
@@ -219,7 +216,7 @@ class AMGsync(object):
         return amg_obj['syncActivity']
 
     def run_sync_action(self):
-        # If we get to this point we know that the states differ, and there is no 'err' state, 
+        # If we get to this point we know that the states differ, and there is no 'err' state,
         # so no need to revalidate
 
         post_body = dict()
