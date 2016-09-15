@@ -18,7 +18,7 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 DOCUMENTATION = '''
-module: na_eseries_facts
+module: netapp_e_facts
 version_added: '2.2'
 short_description: Get facts about NetApp E-Series arrays
 options:
@@ -55,7 +55,7 @@ author: Kevin Hulquest (@hulquest)
 EXAMPLES = """
 ---
     - name: Get array facts
-      na_eseries_facts:
+      netapp_e_facts:
         array_id: "{{ netapp_array_id }}"
         api_url: "{{ netapp_api_url }}"
         api_username: "{{ netapp_api_username }}"

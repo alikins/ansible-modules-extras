@@ -18,7 +18,7 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 DOCUMENTATION = '''
-module: na_eseries_storage_system
+module: netapp_e_storage_system
 version_added: "2.2"
 short_description: Add/remove arrays from the Web Services Proxy
 description:
@@ -80,7 +80,7 @@ author: Kevin Hulquest (@hulquest)
 EXAMPLES = '''
 ---
     - name:  Presence of storage system
-      na_eseries_storage_system:
+      netapp_e_storage_system:
         ssid: "{{ item.key }}"
         state: present
         api_url: "{{ netapp_api_url }}"
